@@ -1,0 +1,34 @@
+# https://github.com/remonbonbon/makefile-example
+TARGET=timer
+
+SDIR=./src
+ODIR=./obj
+IDIR=./include
+
+_SRCS=$(shell (cd $(SDIR) && ls -1 *.c))
+_OBJS=$(_SRCS:.c=.o)
+
+SRCS=$(patsubst %,$(SDIR)/%,$(_SRCS))
+OBJS=$(patsubst %,$(ODIR)/%,$(_OBJS))
+
+HEADS=$(shell find $(IDIR) -type f -name *.h)
+
+CC=gcc
+CFLAGS=-Wall -I$(IDIR)
+# DFLAGS = -lm
+
+all: $(TARGET)
+
+$(TARGET): $(OBJS) $(HEADS)
+	$(CC) $(CFLAGS) -o $@ $(OBJS)
+
+run: all
+	@./$(TARGET)
+
+.PHONY: depend clean
+depend:
+	$(CC) $(INCLUDES) -MM $(SRCS) > $(DEPS)
+	@sed -i -E "s/^(.+?).o: ([^ ]+?)\1/\2\1.o: \2\1/g" $(DEPS)
+
+clean:
+	$(RM) $(OBJS) $(TARGET)
