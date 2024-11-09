@@ -1,18 +1,27 @@
-TDIR=./bin/
-TARGET=$(TDIR)timer
-
 CC=gcc
-CFLAGS=-Wall
+CFLAGS=-g -Wall
 
+BDIR=./bin
 SDIR=./src
-SRC=$(shell find $(SDIR) -type f -name *.c)
+ODIR=./obj
 
-all:
-	mkdir -p $(TDIR)
-	$(CC) $(CFLAGS) -o $(TARGET) $(SRC)
+BIN=$(BDIR)/timer
+SRCS=$(wildcard $(SDIR)/*.c)
+OBJS=$(patsubst $(SDIR)/%.c, $(ODIR)/%.o, $(SRCS))
+
+all: $(BIN)
+
+$(BIN): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $@
+
+$(ODIR)/%.o: $(SDIR)/%.c
+	@mkdir -p $(BDIR)
+	@mkdir -p $(SDIR)
+	@mkdir -p $(ODIR)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 run: all
-	@./$(TARGET)
+	@./$(BIN)
 
 clean:
-	$(RM) $(TDIR)
+	$(RM) -r $(BDIR)/* $(ODIR)/*
