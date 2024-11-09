@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-g -Wall
+CFLAGS=-Wall
 
 BDIR=./bin
 SDIR=./src
@@ -12,16 +12,15 @@ OBJS=$(patsubst $(SDIR)/%.c, $(ODIR)/%.o, $(SRCS))
 all: $(BIN)
 
 $(BIN): $(OBJS)
+	mkdir -p $(@D)
 	$(CC) $(CFLAGS) $(OBJS) -o $@
 
 $(ODIR)/%.o: $(SDIR)/%.c
-	@mkdir -p $(BDIR)
-	@mkdir -p $(SDIR)
-	@mkdir -p $(ODIR)
-	$(CC) $(CFLAGS) -c $< -o $@
+	mkdir -p $(@D)
+	$(CC) $(CFLAGS) -c $^ -o $@
 
 run: all
-	@./$(BIN)
+	./$(BIN)
 
 clean:
 	$(RM) -r $(BDIR)/* $(ODIR)/*
