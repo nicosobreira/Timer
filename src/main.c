@@ -2,8 +2,7 @@
 #include <curses.h>
 
 int timer(int, char *[]);
-void newScreen(void);
-void closeScreen(void);
+int main(int argc, char *argv[]);
 
 int timer(int argc, char *argv[]) {
   Date date;
@@ -14,20 +13,6 @@ int timer(int argc, char *argv[]) {
   printDate(&date, ":");
   loop(total_seconds, &date);
   return 0;
-}
-
-void newScreen(void) {
-  initscr();
-  cbreak();
-  noecho();
-  keypad(stdscr, TRUE);
-}
-
-void closeScreen(void) {
-  keypad(stdscr, FALSE);
-  echo();
-  nocbreak();
-  endwin();
 }
 
 /* Function as a wrapper  for curses */

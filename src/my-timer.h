@@ -7,6 +7,10 @@ typedef struct Date {
   int hour;
 } Date;
 
+void newScreen(void);
+
+void closeScreen(void);
+
 void loop(int, Date *);
 
 void askDate(Date *);

@@ -3,6 +3,20 @@
 #include <stdio.h>
 #include <time.h>
 
+void newScreen(void) {
+  initscr();
+  cbreak();
+  /*noecho();*/
+  keypad(stdscr, TRUE);
+}
+
+void closeScreen(void) {
+  keypad(stdscr, FALSE);
+  echo();
+  nocbreak();
+  endwin();
+}
+
 void loop(int total_seconds, Date *date) {
   time_t initial, passed;
   initial = time(NULL);
@@ -16,14 +30,14 @@ void loop(int total_seconds, Date *date) {
   }
 }
 void askDate(Date *date) {
-  printf("\tDigit the following values:\n");
-  printf("Hours: ");
+  mvaddstr(0, 0, "\tDigit the following values:\n");
+  mvaddstr(1, 0, "Hours: ");
   scanf("%i", &date->hour);
 
-  printf("Minutes: ");
+  mvaddstr(3, 0, "Minutes: ");
   scanf("%i", &date->min);
 
-  printf("Seconds: ");
+  mvaddstr(4, 0, "Seconds: ");
   scanf("%i", &date->sec);
 }
 
