@@ -5,10 +5,8 @@
 
 int main(int argc, char *argv[]) {
   Time time;
-  Time *p_time = &time;
   int total_seconds = 0;
 
-  printf("\n");
   switch (argc - 1) {
   case 0:
     askTime(&time);
@@ -35,7 +33,7 @@ int main(int argc, char *argv[]) {
   }
 
   total_seconds = (time.hour * 3600) + (time.min * 60) + time.sec;
-  printTime(p_time, ":");
+  printTime(&time, ":");
   printf("%i\n", total_seconds);
   return 0;
 }
