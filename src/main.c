@@ -8,7 +8,6 @@ void loop(int total_seconds, Date *date) {
   initial = time(NULL);
   while (1) {
     passed = time(NULL) - initial;
-    printDate(date, ":");
     if (passed >= total_seconds) {
       printf("Acabou!\n");
       break;
@@ -23,6 +22,7 @@ int main(int argc, char *argv[]) {
   setDate(argc - 1, argv, &date);
 
   int total_seconds = (date.hour * 3600) + (date.min * 60) + date.sec;
+  printDate(&date, ":");
   loop(total_seconds, &date);
   return 0;
 }
