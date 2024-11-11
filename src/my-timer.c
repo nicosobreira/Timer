@@ -6,7 +6,7 @@
 void newScreen(void) {
   initscr();
   cbreak();
-  /*noecho();*/
+  noecho();
   keypad(stdscr, TRUE);
 }
 
