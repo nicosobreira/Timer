@@ -16,7 +16,7 @@ void askTime(Time *time) {
 }
 
 void printTime(Time *time, char *sep) {
-  printf("%i%s", time->hour, sep);
-  printf("%i%s", time->min, sep);
-  printf("%i\n", time->sec);
+  printf("%02i%s", time->hour, sep);
+  printf("%02i%s", time->min, sep);
+  printf("%02i\n", time->sec);
 }
