@@ -1,49 +1,41 @@
+#include "my-timer.h"
 #include <stdio.h>
 
-#define LEN(ARR) ((sizeof(ARR) / sizeof(ARR[0])))
-
-void toInt(char *str, int *num) { sscanf(str, "%04d", num); }
+/*#define LEN(ARR) ((sizeof(ARR) / sizeof(ARR[0])))*/
 
 int main(int argc, char *argv[]) {
-  int time[3] = {0, 0, 0}; // Stores hours, minutes and seconds
-  unsigned int total_seconds = 0;
+  Time time;
+  Time *p_time = &time;
+  int total_seconds = 0;
+
+  printf("\n");
   switch (argc - 1) {
   case 0:
-    printf("\tDigit the following values:");
-
-    printf("\nHours: ");
-    scanf("%i", &time[0]);
-
-    printf("Minutes: ");
-    scanf("%i", &time[1]);
-
-    printf("Seconds: ");
-    scanf("%i", &time[2]);
+    askTime(&time);
     break;
     ;
   case 1:
-    toInt(argv[1], &time[2]);
+    toInt(argv[1], &time.sec);
     break;
     ;
   case 2:
-    toInt(argv[1], &time[1]);
-    toInt(argv[2], &time[2]);
+    toInt(argv[1], &time.min);
+    toInt(argv[2], &time.sec);
     break;
     ;
   case 3:
-    toInt(argv[1], &time[0]);
-    toInt(argv[2], &time[1]);
-    toInt(argv[3], &time[2]);
+    toInt(argv[1], &time.sec);
+    toInt(argv[2], &time.min);
+    toInt(argv[3], &time.sec);
     break;
     ;
   default:
     printf("Digit nothing or three number at maximum\n");
     return -1;
   }
-  for (int i = 0; i < LEN(time); i++) {
-    printf("%i\n", time[i]);
-    total_seconds += time[i];
-  }
-  printf("%o\n", total_seconds);
+
+  total_seconds = (time.hour * 3600) + (time.min * 60) + time.sec;
+  printTime(p_time, ":");
+  printf("%i\n", total_seconds);
   return 0;
 }
