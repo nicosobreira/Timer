@@ -2,7 +2,6 @@
 #include <curses.h>
 #include <stdio.h>
 #include <time.h>
-#include <unistd.h>
 
 void loop(int total_seconds, Date *date) {
   time_t initial, passed;
@@ -13,7 +12,7 @@ void loop(int total_seconds, Date *date) {
       printf("Acabou!\n");
       break;
     }
-    usleep(3);
+    napms(3);
   }
 }
 void askDate(Date *date) {
