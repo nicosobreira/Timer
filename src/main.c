@@ -1,5 +1,4 @@
 #include "my-timer.h"
-#include <unistd.h>
 
 int main(int argc, char *argv[]) {
   Date date;

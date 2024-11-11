@@ -3,8 +3,6 @@
 #include <time.h>
 #include <unistd.h>
 
-void toInt(char *str, int *num) { sscanf(str, "%d", num); }
-
 void loop(int total_seconds, Date *date) {
   time_t initial, passed;
   initial = time(NULL);
@@ -65,3 +63,5 @@ void printDate(Date *date, char *sep) {
   printf("%02i%s", date->min, sep);
   printf("%02i\n", date->sec);
 }
+
+void toInt(char *str, int *num) { sscanf(str, "%d", num); }
