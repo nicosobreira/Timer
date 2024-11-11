@@ -22,7 +22,7 @@ int main(int argc, char *argv[]) {
     break;
     ;
   case 3:
-    toInt(argv[1], &time.sec);
+    toInt(argv[1], &time.hour);
     toInt(argv[2], &time.min);
     toInt(argv[3], &time.sec);
     break;
