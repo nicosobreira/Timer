@@ -7,12 +7,14 @@ typedef struct Date {
   int hour;
 } Date;
 
-void toInt(char *, int *);
+void loop(int, Date *);
 
 void askDate(Date *);
 
 int setDate(int, char *[], Date *);
 
 void printDate(Date *, char *);
+
+void toInt(char *, int *);
 
 #endif

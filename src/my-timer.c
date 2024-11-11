@@ -1,8 +1,22 @@
 #include "my-timer.h"
 #include <stdio.h>
+#include <time.h>
+#include <unistd.h>
 
 void toInt(char *str, int *num) { sscanf(str, "%d", num); }
 
+void loop(int total_seconds, Date *date) {
+  time_t initial, passed;
+  initial = time(NULL);
+  while (1) {
+    passed = time(NULL) - initial;
+    if (passed >= total_seconds) {
+      printf("Acabou!\n");
+      break;
+    }
+    usleep(3);
+  }
+}
 void askDate(Date *date) {
   printf("\tDigit the following values:\n");
   printf("Hours: ");
