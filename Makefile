@@ -12,11 +12,11 @@ OBJS=$(patsubst $(SDIR)/%.c, $(ODIR)/%.o, $(SRCS))
 all: $(BIN)
 
 $(BIN): $(OBJS)
-	mkdir -p $(@D)
+	@mkdir -p $(@D)
 	$(CC) $(CFLAGS) $(OBJS) -o $@
 
 $(ODIR)/%.o: $(SDIR)/%.c
-	mkdir -p $(@D)
+	@mkdir -p $(@D)
 	$(CC) $(CFLAGS) -c $^ -o $@
 
 run: all
