@@ -20,7 +20,8 @@ $(ODIR)/%.o: $(SDIR)/%.c
 	$(CC) $(CFLAGS) -c $^ -o $@
 
 run: all
-	./$(BIN)
+	@echo -e "\tRunning $(BIN)...\n"
+	@$(BIN)
 
 clean:
 	$(RM) -r $(BDIR)/* $(ODIR)/*
