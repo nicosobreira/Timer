@@ -3,20 +3,20 @@
 
 void toInt(char *str, int *num) { sscanf(str, "%04d", num); }
 
-void askTime(Time *time) {
+void askDate(Date *date) {
   printf("\tDigit the following values:");
   printf("\nHours: ");
-  scanf("%i", &time->hour);
+  scanf("%i", &date->hour);
 
   printf("Minutes: ");
-  scanf("%i", &time->min);
+  scanf("%i", &date->min);
 
   printf("Seconds: ");
-  scanf("%i", &time->sec);
+  scanf("%i", &date->sec);
 }
 
-void printTime(Time *time, char *sep) {
-  printf("%02i%s", time->hour, sep);
-  printf("%02i%s", time->min, sep);
-  printf("%02i\n", time->sec);
+void printDate(Date *date, char *sep) {
+  printf("%02i%s", date->hour, sep);
+  printf("%02i%s", date->min, sep);
+  printf("%02i\n", date->sec);
 }

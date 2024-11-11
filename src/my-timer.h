@@ -1,16 +1,16 @@
 #ifndef MY_TIMER_H
 #define MY_TIMER_H
 
-typedef struct Time {
+typedef struct Date {
   int sec;
   int min;
   int hour;
-} Time;
+} Date;
 
 void toInt(char *, int *);
 
-void askTime(Time *);
+void askDate(Date *);
 
-void printTime(Time *, char *);
+void printDate(Date *, char *);
 
 #endif
