@@ -1,4 +1,5 @@
 #include "my-timer.h"
+#include <curses.h>
 #include <stdio.h>
 #include <time.h>
 #include <unistd.h>
@@ -30,10 +31,7 @@ void askDate(Date *date) {
 int setDate(int argc, char *argv[], Date *date) {
   switch (argc) {
   case 0:
-    /*askDate(date);*/
-    date->hour = 0;
-    date->min = 0;
-    date->sec = 2;
+    askDate(date);
     break;
     ;
   case 1:
