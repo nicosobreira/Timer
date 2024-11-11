@@ -2,7 +2,7 @@
 #include <curses.h>
 
 int timer(int, char *[]);
-int main(int argc, char *argv[]);
+int main(int, char *[]);
 
 int timer(int argc, char *argv[]) {
   Date date;
