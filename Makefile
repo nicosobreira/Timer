@@ -21,7 +21,7 @@ $(ODIR)/%.o: $(SDIR)/%.c
 	$(CC) $(CFLAGS) -c $^ -o $@
 
 run: all
-	@echo -e "\tRunning $(BIN)...\n"
+	@printf "\tRunning %s...\n" $(BIN)
 	@$(BIN)
 
 clean:
