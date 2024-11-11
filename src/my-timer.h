@@ -11,6 +11,8 @@ void toInt(char *, int *);
 
 void askDate(Date *);
 
+int setDate(int, char *[], Date *);
+
 void printDate(Date *, char *);
 
 #endif
