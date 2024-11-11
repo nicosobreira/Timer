@@ -1,5 +1,6 @@
 CC=gcc
 CFLAGS=-Wall
+LDFLAGS=-lncurses
 
 BDIR=./bin
 SDIR=./src
@@ -13,7 +14,7 @@ all: $(BIN)
 
 $(BIN): $(OBJS)
 	@mkdir -p $(@D)
-	$(CC) $(CFLAGS) $(OBJS) -o $@
+	$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
 
 $(ODIR)/%.o: $(SDIR)/%.c
 	@mkdir -p $(@D)
