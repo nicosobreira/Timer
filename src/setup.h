@@ -1,17 +1,11 @@
-#ifndef MY_TIMER_H
-#define MY_TIMER_H
+#include "my-timer.h"
 
-typedef struct Date {
-  int sec;
-  int min;
-  int hour;
-} Date;
+#ifndef SETUP_H
+#define SETUP_H
 
 void newScreen(void);
 
 void closeScreen(void);
-
-void loop(int, Date *);
 
 int askDate(const char *);
 
