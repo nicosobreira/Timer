@@ -1,10 +1,10 @@
+#include "setup.h"
 #include "my-timer.h"
 #include <curses.h>
 
-void newScreen(void) {
-  initscr();
-  cbreak();
-  /*noecho();*/
+void setInputScreen(void) {
+  echo();
+  nocbreak();
   keypad(stdscr, TRUE);
 }
 
@@ -15,21 +15,31 @@ void closeScreen(void) {
   endwin();
 }
 
-int askDate(const char *message) {
+int askDate(const char *message, int limit) {
   int time;
-  refresh();
-  printw("%s", message);
-  scanf("%i", &time);
+  char *str;
+  while (1) {
+    printw("%s", message);
+    refresh();
+    getstr(str);
+    printw("\n");
+    toInt(str, &time);
+
+    if (time <= limit) {
+      break;
+    }
+    printw("Error: digit a number less equal to %i\n", limit);
+  }
   return time;
 }
 
 int setDate(int argc, char *argv[], Date *pdate) {
   switch (argc) {
   case 0:
-    addstr("\tDigit the following values:\n");
-    pdate->hour = askDate("Hours: ");
-    pdate->min = askDate("Minutes: ");
-    pdate->sec = askDate("Seconds: ");
+    printw("\tDigit the following values:\n");
+    pdate->hour = askDate("Hours: ", 99);
+    pdate->min = askDate("Minutes: ", 60);
+    pdate->sec = askDate("Seconds: ", 60);
     break;
     ;
   case 1:

@@ -3,11 +3,13 @@
 #ifndef SETUP_H
 #define SETUP_H
 
-void newScreen(void);
+#define LEN(arr) (sizeof(arr) / sizeof(arr[0]))
+
+void setInputScreen(void);
 
 void closeScreen(void);
 
-int askDate(const char *);
+int askDate(const char *, int);
 
 int setDate(int, char *[], Date *);
 

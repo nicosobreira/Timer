@@ -1,4 +1,5 @@
 #include "my-timer.h"
+#include "setup.h"
 #include <curses.h>
 
 int timer(int, char *[]);
@@ -18,7 +19,8 @@ int timer(int argc, char *argv[]) {
 
 /* Function as a wrapper  for curses */
 int main(int argc, char *argv[]) {
-  newScreen();
+  initscr();
+  setInputScreen();
   timer(argc, argv);
   closeScreen();
   return 0;
